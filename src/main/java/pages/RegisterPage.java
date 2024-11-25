@@ -2,6 +2,8 @@ package pages;
 
 import com.github.javafaker.Faker;
 import com.google.common.util.concurrent.FakeTimeLimiter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +37,8 @@ public class RegisterPage extends BasePage {
     String emailAddress = faker.internet().emailAddress();
     String password = faker.internet().password(8, 12, true, true,
             true);
+
+    private static final Logger log = LogManager.getLogger(RegisterPage.class.getName());
 
     public void registerUser() {
         typeIn(firstNameField, faker.name().firstName());
